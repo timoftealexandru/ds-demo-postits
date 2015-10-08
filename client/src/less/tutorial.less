@@ -1,0 +1,63 @@
+/**
+ * Menu Icon
+ */
+.line {
+    display: inline-block;
+    width: 20px;
+    height: 20px/7;
+    background: #fff;
+    border-radius: 20px/14; 
+    transition: .3s;
+}
+
+.lines {
+  position: relative; 
+  .line;
+
+  &:before, &:after {
+    .line;
+    position: absolute;
+    left:0;
+    content: '';
+    transform-origin: 20px/14 center;
+  }
+  &:before { 
+    top: 20px/4; 
+  }
+  &:after { 
+    top: -20px/4; 
+  }
+}
+
+.lines-button {
+  padding: 20px/2 20px/4;
+  transition: .3s;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 20px/7;
+
+  &:hover {
+    opacity: 1;
+  }
+  &:active {
+    transition: 0;
+  }
+}
+
+.menu-open .lines-button.x {
+  .lines {
+    background: transparent;
+    &:before, &:after{
+        background-color: rgb(30, 76, 74);
+        transform-origin: 50% 50%;
+        top:0;
+        width: 20px;
+    }
+    &:before{
+        transform: rotate3d(0,0,1,45deg); 
+    }
+    &:after{
+        transform: rotate3d(0,0,1,-45deg); 
+    }
+  }
+}

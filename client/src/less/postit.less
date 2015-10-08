@@ -1,0 +1,126 @@
+/**
+ * General
+ */
+.sticky-note {
+  position: relative;
+}
+
+.sticky-note-header {
+  position: absolute;
+  width: 100%;
+}
+
+.sticky-note-inner {
+}
+
+.sticky-note-inner:after {
+  content: "";
+  height: 55%;
+  position: absolute;
+  width: 50%;
+  z-index: -2;
+  transform: skew(-8deg) rotate(-6deg);
+  bottom: 16px;
+  left: 10px;
+  box-shadow: -5px 10px 10px rgba(0,0,0,0.5);
+}
+
+/**
+ * Large Size
+ */
+.large-sticky-note {
+  .sticky-note-header {
+    height: 30px;
+  }
+
+  .sticky-note-inner {
+    min-height: 200px;
+    min-width: 200px;
+    padding: 45px 20px 10px;
+
+    border-radius: ~"0 0 0 200px/0 0 0 10px";
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
+  }
+}
+
+/**
+ * Small Size
+ */
+.small-sticky-note {
+  display: inline-block;
+  transform: rotate(3deg);
+
+  .sticky-note-header {
+    height: 12px;
+  }
+
+  .sticky-note-inner {
+    padding: 12px 10px 5px;
+
+    border-radius: ~"0 0 0 200px/0 0 0 10px";
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
+  }
+}
+
+/**
+ * Media Queries
+  */
+@media ( min-width: 801px ) {
+  .sticky-note {
+    margin: 20px;
+  }
+
+  .large-sticky-note {
+    width: 200px;
+  }
+
+  .small-sticky-note {
+    margin: 10px;
+    
+    .sticky-note-inner {
+      height: 100px;
+      width: 110px;
+    }
+  }
+}
+
+@media ( max-width: 800px ) {
+  .large-sticky-note {
+    display: block;
+    margin: 20px auto;
+    width: 75%;
+
+    .sticky-note-inner:after {
+      bottom: 30px;
+    }
+  }
+
+  .small-sticky-note {
+    max-width: 29%;
+    margin: -20px 5px 10px 5px;
+    
+    .sticky-note-inner {
+      min-height: 100px;
+      min-width: 100px;
+      max-width: 150px;
+    }
+  }
+}
+
+/**
+ * Backgrounds
+ */
+.sad .sticky-note-inner {
+  background-color: #ffcd5a;
+  background-image: -webkit-linear-gradient(top,#ffb71e 0%,#ffcd5a 22%,#ffcd5a 100%);
+}
+
+.happy .sticky-note-inner {
+  background-color: #15b227;
+  background-image: -webkit-linear-gradient(top,#15b227 0%,#40b24d 22%,#40b24d 100%);
+}
+
+.mad .sticky-note-inner {
+  background-color: #1e9dff;
+  background-image: -webkit-linear-gradient(top,#1e9dff 0%,#5bb8ff 22%,#5bb8ff 100%);
+}

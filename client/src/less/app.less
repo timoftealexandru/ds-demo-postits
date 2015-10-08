@@ -1,0 +1,61 @@
+body {
+	background-image: url( '../assets/white-board-background.jpg' );
+}
+
+.add-sticky-notes-wrapper {
+	z-index: 2;
+}
+
+@media ( min-width: 801px ) {
+	.header {
+		position: fixed;
+		top: 0;
+		z-index: 1;
+
+		color: white;
+		height: 35px;
+    	width: 100%;
+    	background-color: rgb(204, 204, 204);
+	}
+
+	.board {
+		margin-top: 35px;
+	}
+
+	.header-title {
+		font-size: 18px;
+    	position: relative; //TODO
+    	top: 5px;
+	}
+
+	.add-sticky-notes-wrapper {
+		position: fixed;
+		top: 0;
+		right: 20px;
+	}
+}
+
+@media ( max-width: 800px ) {
+	.header {
+		display: none;
+	}
+
+	.board {
+		margin-bottom: 125px;
+	}
+
+	.add-sticky-notes-wrapper {
+		width: 100%;
+		background-color: #ccc;
+
+		position: fixed;
+		bottom: 0;
+	}
+
+	.add-sticky-notes {
+		margin: 0 auto;
+	    text-align: center;
+	    display: block;
+	    max-width: 1000px;
+	}
+}
