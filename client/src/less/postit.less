@@ -3,14 +3,24 @@
  */
 .sticky-note {
   position: relative;
+  display: inline-block;
 }
 
 .sticky-note-header {
+  cursor: grab;
+  cursor: -webkit-grab;
+
   position: absolute;
   width: 100%;
 }
 
-.sticky-note-inner {
+.sticky-note-copy {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    height: 125px;
+    outline: none;
+    border: none;
+    resize: none;
 }
 
 .sticky-note-inner:after {
@@ -23,6 +33,12 @@
   bottom: 16px;
   left: 10px;
   box-shadow: -5px 10px 10px rgba(0,0,0,0.5);
+}
+
+.sticky-note-inner {
+  line-height: 60px;
+  height: 80px;
+  width: 90px;
 }
 
 /**
@@ -41,6 +57,11 @@
     border-radius: ~"0 0 0 200px/0 0 0 10px";
     box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
   }
+
+  .sticky-note-copy {
+    font-size: 25px;
+    font-family: 'Reenie Beanie', cursive;
+  }
 }
 
 /**
@@ -49,12 +70,14 @@
 .small-sticky-note {
   display: inline-block;
   transform: rotate(3deg);
-
-  .sticky-note-header {
-    height: 12px;
-  }
+  
+  cursor: grab;
+  cursor: -webkit-grab;
 
   .sticky-note-inner {
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Permanent Marker', cursive;
     padding: 12px 10px 5px;
 
     border-radius: ~"0 0 0 200px/0 0 0 10px";
@@ -76,11 +99,6 @@
 
   .small-sticky-note {
     margin: 10px;
-    
-    .sticky-note-inner {
-      height: 100px;
-      width: 110px;
-    }
   }
 }
 
@@ -98,29 +116,20 @@
   .small-sticky-note {
     max-width: 29%;
     margin: -20px 5px 10px 5px;
-    
-    .sticky-note-inner {
-      min-height: 100px;
-      min-width: 100px;
-      max-width: 150px;
-    }
   }
 }
 
 /**
  * Backgrounds
  */
-.sad .sticky-note-inner {
-  background-color: #ffcd5a;
-  background-image: -webkit-linear-gradient(top,#ffb71e 0%,#ffcd5a 22%,#ffcd5a 100%);
+[data-type="sad"] .sticky-note-inner {
+  background-image: -webkit-linear-gradient(top,#b0e1ec  15%,#baebf6  20%,#baebf6 33%);
 }
 
-.happy .sticky-note-inner {
-  background-color: #15b227;
-  background-image: -webkit-linear-gradient(top,#15b227 0%,#40b24d 22%,#40b24d 100%);
+[data-type="happy"] .sticky-note-inner {
+  background-image: -webkit-linear-gradient(top,#f5e38c  15%,#ffed96  20%,#ffed96 33%);
 }
 
-.mad .sticky-note-inner {
-  background-color: #1e9dff;
-  background-image: -webkit-linear-gradient(top,#1e9dff 0%,#5bb8ff 22%,#5bb8ff 100%);
+[data-type="mad"] .sticky-note-inner {
+  background-image: -webkit-linear-gradient(top,#e6a7a8  15%,#f0b1b2  20%,#f0b1b2 33%);
 }

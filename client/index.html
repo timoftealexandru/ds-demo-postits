@@ -4,13 +4,21 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-	<script type="text/javascript" src="bower_components/deepstream.io-client-js/dist/deepstream.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Reenie+Beanie' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
 
 	<link rel="stylesheet" href="src/css/reset.css" type="text/css" media="all">	
 	<link rel="stylesheet" href="src/css/tutorial.css" type="text/css" media="all">	
 	<link rel="stylesheet" href="src/css/postit.css" type="text/css" media="all">	
 	<link rel="stylesheet" href="src/css/app.css" type="text/css" media="all">
+
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+ 	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="https://rawgit.com/hoxton-one/deepstream.io-client-js/master/dist/deepstream.min.js"></script>
+
+	<script type="text/javascript" src="src/js/postit.js"></script>
+	<script type="text/javascript" src="src/js/postit-board.js"></script>
+	<script type="text/javascript" src="src/js/app.js"></script>
 </head>
 
 <body>
@@ -28,56 +36,31 @@
 	</div>
 
 	<div class="board">
-
-		<div class="sticky-note large-sticky-note happy">
-		  <div class="sticky-note-header">
-		  </div>
-		  <div class="sticky-note-inner">
-		    <p>This note is very sticky and yellow!</p>
-		  </div>
-		</div>
-
-		<div class="sticky-note large-sticky-note sad">
-		  <div class="sticky-note-header">
-		  </div>
-		  <div class="sticky-note-inner">
-		    <p>This note is very sticky and yellow!</p>
-		  </div>
-		</div>
-
-		<div class="sticky-note large-sticky-note mad">
-		  <div class="sticky-note-header">
-		  </div>
-		  <div class="sticky-note-inner">
-		    <p>This note is very sticky and yellow!</p>
-		  </div>
-		</div>
-
 	</div>
 
 	<div class="add-sticky-notes-wrapper">
 		<span class="add-sticky-notes">
-			<div class="sticky-note small-sticky-note happy">
+			<div class="sticky-note small-sticky-note" data-type="happy">
 				<div class="sticky-note-header">
 			 	</div>
 			 	<div class="sticky-note-inner">
-					<p>This note is for things that make you happy!</p>
+					GLAD
 			  	</div>
 			</div>
 
-			<div class="sticky-note small-sticky-note sad">
+			<div class="sticky-note small-sticky-note" data-type="sad">
 				<div class="sticky-note-header">
 			 	</div>
 			 	<div class="sticky-note-inner">
-					<p>This note is for things that make you sad =(</p>
+					SAD
 			  	</div>
 			</div>
 
-			<div class="sticky-note small-sticky-note mad">
+			<div class="sticky-note small-sticky-note" data-type="mad">
 				<div class="sticky-note-header">
 			 	</div>
 			 	<div class="sticky-note-inner">
-					<p>This note is for things that make you mad!</p>
+					MAD
 			  	</div>
 			</div>
 		</span>
