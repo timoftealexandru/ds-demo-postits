@@ -39,6 +39,7 @@ Postit.prototype.addPositioning = function() {
 		.css( 'position', 'absolute' )
 		.draggable( {
 			handle: ".sticky-note-header",
+			zIndex: 999,
 			drag: function( event, ui ) {	
 				this.record.set( 'position', {
 					top: ui.position.top,
