@@ -1,0 +1,115 @@
+/**
+ * Sticky Note
+ */
+.sticky-note {
+    position: relative;
+    display: inline-block;
+}
+.sticky-note-header {
+    cursor: grab;
+    cursor: -webkit-grab;
+    position: absolute;
+    width: 100%
+}
+.sticky-note-copy {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    height: 125px;
+    outline: none;
+    border: none;
+    resize: none;
+}
+.sticky-note-inner:after {
+    content: "";
+    height: 55%;
+    position: absolute;
+    width: 50%;
+    z-index: -2;
+    transform: skew(-8deg) rotate(-6deg);
+    bottom: 16px;
+    left: 10px;
+    box-shadow: -5px 10px 10px rgba(0, 0, 0, 0.5);
+}
+.sticky-note-inner {
+    line-height: 60px;
+    height: 80px;
+    width: 90px;
+}
+
+/**
+ * Large Sticky Note
+ */
+.large-sticky-note .sticky-note-header {
+    height: 30px;
+}
+.large-sticky-note .sticky-note-inner {
+    min-height: 200px;
+    min-width: 200px;
+    padding: 45px 20px 10px;
+    border-radius: 0 0 0 200px/0 0 0 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.large-sticky-note .sticky-note-copy {
+    font-size: 25px;
+    font-family: 'Reenie Beanie', cursive;
+}
+
+/**
+ * Small Sticky Note
+ */
+.small-sticky-note {
+    display: inline-block;
+    transform: rotate(3deg);
+    cursor: grab;
+    cursor: -webkit-grab;
+}
+.small-sticky-note .sticky-note-inner {
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Permanent Marker', cursive;
+    padding: 12px 10px 5px;
+    border-radius: 0 0 0 200px/0 0 0 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+/**
+ * Colors
+ */
+[data-type="sad"] .sticky-note-inner {
+    background-image: -webkit-linear-gradient(top, #b0e1ec 15%, #baebf6 20%, #baebf6 33%);
+}
+[data-type="happy"] .sticky-note-inner {
+    background-image: -webkit-linear-gradient(top, #f5e38c 15%, #ffed96 20%, #ffed96 33%);
+}
+[data-type="mad"] .sticky-note-inner {
+    background-image: -webkit-linear-gradient(top, #e6a7a8 15%, #f0b1b2 20%, #f0b1b2 33%);
+}
+
+/**
+ * Devices
+ */
+@media (min-width: 801px) {
+    .sticky-note {
+        margin: 20px;
+    }
+    .large-sticky-note {
+        width: 200px;
+    }
+    .small-sticky-note {
+        margin: 10px;
+    }
+}
+@media (max-width: 800px) {
+    .large-sticky-note {
+        display: block;
+        margin: 20px auto;
+        width: 75%;
+    }
+    .large-sticky-note .sticky-note-inner:after {
+        bottom: 30px;
+    }
+    .small-sticky-note {
+        max-width: 29%;
+        margin: -20px 5px 10px 5px;
+    }
+}
