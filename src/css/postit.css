@@ -58,8 +58,6 @@
 .small-postit {
     display: inline-block;
     transform: rotate(3deg);
-    cursor: grab;
-    cursor: -webkit-grab;
 }
 .small-postit .postit-inner {
     text-align: center;
@@ -116,5 +114,6 @@
     .small-postit {
         max-width: 29%;
         margin: -20px 5px 10px 5px;
+        cursor: pointer;
     }
 }

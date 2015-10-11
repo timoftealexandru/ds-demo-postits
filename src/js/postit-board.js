@@ -56,8 +56,8 @@ PostitBoard.prototype.enableClickAdding = function() {
 	$( '.small-postit' ).click( function( e ) {
 		this.addItem( {
 			position: {
-				left: 0,
-				top: 0
+				left: 300,
+				top: 500
 			},
 			content: '',
 			type: $( e.currentTarget ).attr( 'data-type' )
