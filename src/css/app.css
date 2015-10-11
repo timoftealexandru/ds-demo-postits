@@ -27,7 +27,7 @@ body {
         top: 5px;
         font-family: 'Permanent Marker', cursive;
     }
-    .add-sticky-notes-wrapper {
+    .add-postits-wrapper {
         position: fixed;
         top: 0;
         right: 20px;
@@ -41,14 +41,14 @@ body {
     .board {
         margin-bottom: 125px;
     }
-    .add-sticky-notes-wrapper {
+    .add-postits-wrapper {
         width: 100%;
         background-color: #ccc;
         position: fixed;
         bottom: 0;
         z-index: 2;
     }
-    .add-sticky-notes {
+    .add-postits {
         margin: 0 auto;
         text-align: center;
         display: block;

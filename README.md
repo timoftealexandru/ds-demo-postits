@@ -1,1 +1,1 @@
-# ds-demo-sticky-notes
+# ds-demo-postits

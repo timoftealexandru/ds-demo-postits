@@ -79,28 +79,28 @@
 	<div data-nav class="board">
 	</div>
 
-	<div class="add-sticky-notes-wrapper">
-		<span class="add-sticky-notes">
-			<div class="sticky-note small-sticky-note" data-type="happy">
-				<div class="sticky-note-header">
+	<div class="add-postits-wrapper">
+		<span class="add-postits">
+			<div class="postit small-postit" data-type="happy">
+				<div class="postit-header">
 				</div>
-				<div class="sticky-note-inner">
+				<div class="postit-inner">
 					GLAD
 				</div>
 			</div>
 
-			<div class="sticky-note small-sticky-note" data-type="sad">
-				<div class="sticky-note-header">
+			<div class="postit small-postit" data-type="sad">
+				<div class="postit-header">
 				</div>
-				<div class="sticky-note-inner">
+				<div class="postit-inner">
 					SAD
 				</div>
 			</div>
 
-			<div class="sticky-note small-sticky-note" data-type="mad">
-				<div class="sticky-note-header">
+			<div class="postit small-postit" data-type="mad">
+				<div class="postit-header">
 				</div>
-				<div class="sticky-note-inner">
+				<div class="postit-inner">
 					MAD
 				</div>
 			</div>
@@ -145,7 +145,7 @@
 postitElement
 	.css( 'position', 'absolute' )
 	.draggable( {
-		handle: '.sticky-note-header',
+		handle: '.postit-header',
 		zIndex: 999,
 		drag: function( event, ui ) {	
 			//ui.position.top,
@@ -195,14 +195,14 @@ newPostit.set( {
 
 <pre class="tut" id="tut-adding-to-list">
 	<code class="javascript">
-this.stickyList = this.ds.record.getList( 'postits/example-board' );
-this.stickyList.addEntry( newPostitID );
+this.postitList = this.ds.record.getList( 'postits/example-board' );
+this.postitList.addEntry( newPostitID );
 	</code>
 </pre>
 
 <pre class="tut" id="tut-listening-to-list" >
 <code class="javascript">
-this.stickyList.on( 'entry-added', this.onPostitAdded.bind( this ) );
+this.postitList.on( 'entry-added', this.onPostitAdded.bind( this ) );
 
 var record = this.ds.record.getRecord( postitID );
 record.whenReady( function( record ) {

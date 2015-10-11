@@ -1,15 +1,15 @@
 var template = 
-	'<div class="sticky-note large-sticky-note">' +
-	  '<div class="sticky-note-header">' +
+	'<div class="postit large-postit">' +
+	  '<div class="postit-header">' +
 	  '</div>' +
-	  '<div class="sticky-note-inner">' +
-	    '<textarea class="sticky-note-copy"></textarea>' +
+	  '<div class="postit-inner">' +
+	    '<textarea class="postit-copy"></textarea>' +
 	  '</div>' +
 	'</div>';
 
 function Postit( record, isDesktop ) {
 	this.element = $( template );
-	this.textArea = this.element.find( '.sticky-note-copy' );
+	this.textArea = this.element.find( '.postit-copy' );
 
 	this.record = record;
 
@@ -38,7 +38,7 @@ Postit.prototype.addPositioning = function() {
 	this.element
 		.css( 'position', 'absolute' )
 		.draggable( {
-			handle: ".sticky-note-header",
+			handle: ".postit-header",
 			zIndex: 999,
 			drag: function( event, ui ) {	
 				this.record.set( 'position', {
