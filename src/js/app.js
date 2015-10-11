@@ -1,7 +1,7 @@
 ( function( deepstream, $ ) {
 
 	function login() {
-		var ds = deepstream( '192.168.0.201:6020' );
+		var ds = deepstream( '52.28.240.163:6020' );
 		ds.login( {}, function( success, errorEvent, errorMessage ) {
 			if( success ) {
 				var isDesktop = $( window ).width() > 800;
