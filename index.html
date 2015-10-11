@@ -202,13 +202,13 @@ this.postitList.addEntry( newPostitID );
 
 <pre class="tut" id="tut-listening-to-list" >
 <code class="javascript">
-this.postitList.on( 'entry-added', this.onPostitAdded.bind( this ) );
-
-var record = this.ds.record.getRecord( postitID );
-record.whenReady( function( record ) {
-	var postit = new Postit( record, this.isDesktop  );
-	this.boardElement.append( postit.getElement());
-}.bind( this ) );
+this.postitList.on( 'entry-added', function() {
+	var record = this.ds.record.getRecord( postitID );
+	record.whenReady( function( record ) {
+		var postit = new Postit( record );
+		this.boardElement.append( postit.getElement());
+	}.bind( this ) );
+} );
 </code>
 </pre>
 

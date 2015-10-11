@@ -20,7 +20,6 @@ function Postit( record, isDesktop ) {
 
 Postit.prototype.createPostit = function() {
 	this.element
-		.attr( 'id', this.record.name )
 		.attr( 'data-type', this.record.get( 'type' ) );
 };
 
