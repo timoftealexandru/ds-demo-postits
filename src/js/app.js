@@ -7,12 +7,12 @@
 				var isDesktop = $( window ).width() > 800;
 				new PostitBoard( ds, isDesktop );	
 			} else {
-				alert( 'Fail to login.' );
+				alert( 'Failed to login.' );
 			}		
 		} );
 
 		ds.on( 'error', function( error ) {
-			console.log( 'Error occured', error );
+			console.log( 'An error occured', error );
 		} );
 	}
 

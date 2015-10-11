@@ -1,7 +1,6 @@
 function PostitBoard( ds, isDesktop ) {
 	this.ds = ds;
-	this.existingEntries = [];
-	this.board = $( '.board' );
+	this.boardElement = $( '.board' );
 	
 	this.isDesktop = isDesktop;
 	if( this.isDesktop ) {
@@ -10,29 +9,23 @@ function PostitBoard( ds, isDesktop ) {
 		this.enableClickAdding();
 	}
 
-	this.stickyList = this.ds.record.getList( 'room/postits' );
-	this.stickyList.setEntries([])
-	this.stickyList.subscribe( this.onPostitsChanged.bind( this ) );
-	this.stickyList.whenReady( this.onPostitsChanged.bind( this ) );
+	this.stickyList = this.ds.record.getList( 'postits/example-board' );
+	this.stickyList.on( 'entry-added', this.onPostitAdded.bind( this ) );
+	this.stickyList.whenReady( this.onPostitsLoaded.bind( this ) );
 }
 
-PostitBoard.prototype.onPostitsChanged = function() {
-	var postit;
-	var record;
+PostitBoard.prototype.onPostitsLoaded = function() {
+	var entries = this.stickyList.getEntries();
+	for( var i=0; i < entries.length; i++ ) {
+		this.onPostitAdded( entries[ i ] );
+	}
+};
 
-	this.stickyList.subscribe( function() {
-		entries = this.stickyList.getEntries();
-		for( var i=0; i < entries.length; i++ ) {
-			if( this.existingEntries.indexOf( entries[ i ] ) === -1 ) {
-				this.existingEntries.push( entries[ i ] );
-
-				record = this.ds.record.getRecord( entries[ i ] );
-				record.whenReady( function( record ) {
-					postit = new Postit( record, this.isDesktop  );
-					this.board.append( postit.getElement());
-				}.bind( this ) );
-			}
-		}
+PostitBoard.prototype.onPostitAdded = function( postitID ) {
+	var record = this.ds.record.getRecord( postitID );
+	record.whenReady( function( record ) {
+		var postit = new Postit( record, this.isDesktop  );
+		this.boardElement.append( postit.getElement());
 	}.bind( this ) );
 };
 
@@ -44,8 +37,8 @@ PostitBoard.prototype.addItem = function( properties ) {
 };
 
 PostitBoard.prototype.enableDragAdding = function() {
-	$( ".small-sticky-note" ).draggable( {
-		helper: "clone",
+	$( '.small-sticky-note' ).draggable( {
+		helper: 'clone',
 		stop: function( event, ui ) {
 			this.addItem( {
 				position: {
@@ -60,7 +53,7 @@ PostitBoard.prototype.enableDragAdding = function() {
 };
 
 PostitBoard.prototype.enableClickAdding = function() {
-	$( ".small-sticky-note" ).click( function( e ) {
+	$( '.small-sticky-note' ).click( function( e ) {
 		this.addItem( {
 			position: {
 				left: 0,
@@ -69,6 +62,6 @@ PostitBoard.prototype.enableClickAdding = function() {
 			content: '',
 			type: $( e.currentTarget ).attr( 'data-type' )
 		} );
-		$( window ).scrollTop( this.board.height() + 100 );
+		$( window ).scrollTop( this.boardElement.height() + 100 );
 	}.bind( this ) );
 };
