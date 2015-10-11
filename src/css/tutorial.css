@@ -228,3 +228,11 @@ code {
 .tut {
     display: none;
 }
+
+@media (min-width: 801px) {
+}
+@media (max-width: 800px) {
+    .menu {
+        display: none;
+    }
+}

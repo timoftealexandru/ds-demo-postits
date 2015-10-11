@@ -6,8 +6,6 @@
     display: inline-block;
 }
 .postit-header {
-    cursor: grab;
-    cursor: -webkit-grab;
     position: absolute;
     width: 100%
 }
@@ -92,6 +90,10 @@
     .postit {
         margin: 20px;
     }
+    .postit-header {
+        cursor: grab;
+        cursor: -webkit-grab;
+    }
     .large-postit {
         width: 200px;
     }
@@ -104,6 +106,9 @@
         display: block;
         margin: 20px auto;
         width: 75%;
+    }
+    .large-postit .postit-inner {
+        width: 100%;
     }
     .large-postit .postit-inner:after {
         bottom: 30px;
