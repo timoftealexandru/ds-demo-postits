@@ -73,11 +73,6 @@ PostitBoard.prototype.enableClickAdding = function() {
 			content: '',
 			type: type
 		} );
-		console.log( {
-			position: this.getRandomPosition(),
-			content: '',
-			type: type
-		} )
 		$( window ).scrollTop( this.boardElement.height() + 100 );
 	}
 	$( '.small-postit[data-type="mad"]' ).click( addPostit.bind( this, 'mad' ));
