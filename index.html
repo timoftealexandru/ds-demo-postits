@@ -188,7 +188,7 @@ ds.login( {}, function( success, errorEvent, errorMessage ) {
 var newPostitID = this.ds.getUid();
 var newPostit = this.ds.record.getRecord( newPostitID );
 newPostit.set( {
-	type: 'happy',
+	type: 'glad',
 	content: '',
 	position: {
 		top: x,
@@ -200,8 +200,12 @@ newPostit.set( {
 
 <pre class="tut" id="tut-adding-to-list">
 	<code class="javascript">
-this.postitList = this.ds.record.getList( 'postits/example-board' );
-this.postitList.addEntry( newPostitID );
+var newPostitID = this.ds.getUid();
+var newPostit = this.ds.record.getRecord( newPostitID );
+newPostit.whenReady( function( record ) {
+	record.set( properties );
+	this.postitList.addEntry( newPostitID );
+}.bind( this ) );
 	</code>
 </pre>
 
