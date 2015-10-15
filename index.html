@@ -72,7 +72,7 @@
 			<span class="lines"></span>
 		</span>
 		<span class="header-title">
-			RETROSPECTIVE WHITEBOARD
+			RETROSPECTIVE WHITEBOARD - http://postit.hoxton-one.com/
 		</span>
 	</div>
 
@@ -105,6 +105,9 @@
 				</div>
 			</div>
 		</span>
+	</div>
+
+	<div class="eraser">
 	</div>
 
 	<ul class="menu">
@@ -145,8 +148,6 @@
 postitElement
 	.css( 'position', 'absolute' )
 	.draggable( {
-		handle: '.postit-header',
-		zIndex: 999,
 		drag: function( event, ui ) {	
 			//ui.position.top,
 			//ui.position.left
@@ -171,12 +172,12 @@ server.start();
 
 <pre class="tut" id="tut-login">
 <code class="javascript">
-var ds = deepstream( '192.168.0.201:6020' );
+var ds = deepstream( 'localhost:6020' );
 ds.login( {}, function( success, errorEvent, errorMessage ) {
 	if( success ) {
 		new PostitBoard( ds );	
 	} else {
-		alert( 'Fail to login.' );
+		alert( 'Failed to login.' );
 	}		
 } );
 </code>
@@ -209,8 +210,8 @@ this.postitList.addEntry( newPostitID );
 this.postitList.on( 'entry-added', function() {
 	var record = this.ds.record.getRecord( postitID );
 	record.whenReady( function( record ) {
-		var postit = new Postit( record );
-		this.boardElement.append( postit.getElement());
+		this.postits[ postitID ] = new Postit( record, this.isDesktop  );
+		this.boardElement.append( this.postits[ postitID ].getElement());
 	}.bind( this ) );
 } );
 </code>

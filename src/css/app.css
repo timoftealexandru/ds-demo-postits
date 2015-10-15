@@ -1,5 +1,6 @@
 body {
-    background-image: url('../assets/white-board-background.jpg')
+    background-image: url('../assets/white-board-background.jpg');
+    background-size: cover;
 }
 
 .board {
@@ -33,6 +34,17 @@ body {
         right: 20px;
         z-index: 3;
     }
+
+    .eraser {
+        background-size: 100px 50px;
+        background-image: url('../assets/eraser.png');
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        width: 100px;
+        height: 50px;
+        cursor: pointer;
+    }
 }
 @media (max-width: 800px) {
     .header {
@@ -54,4 +66,7 @@ body {
         display: block;
         max-width: 1000px;
     }
+     .eraser {
+        display: none;
+     }
 }

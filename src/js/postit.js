@@ -60,3 +60,7 @@ Postit.prototype.addPositioning = function() {
 Postit.prototype.getElement = function() {
 	return this.element;
 };
+
+Postit.prototype.destroy = function() {
+	this.element.remove();
+};
