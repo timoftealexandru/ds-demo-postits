@@ -3,7 +3,7 @@
 	function toggleMenu( menuVisible ) {
 		$( 'body' ).toggleClass( 'menu-open', menuVisible );
 	}
-	
+
 	function togglePresentation( presentationVisible ) {
 		$( '.presentation' ).toggle( presentationVisible );
 	}
@@ -23,8 +23,8 @@
 	var slide = 3;
 	function onKeyDown( e ) {
 		var datanav = $( '[data-nav]' );
-		
-		if( e.keyCode === 33 && slide > 0 ) {		
+
+		if( e.keyCode === 33 && slide > 0 ) {
 			slide--;
 		} else if( e.keyCode === 34 && slide < datanav.length - 1) {
 			slide++;
@@ -33,10 +33,10 @@
 		}
 
 		console.log( 'Showing slide: ', slide );
-			
+
 		var element = $( datanav[ slide ] );
 		$( '.presentation-slide' ).hide();
-		
+
 		/**
 		 * Presentation mode
 		 */
@@ -44,14 +44,14 @@
 			togglePresentation( true );
 			toggleMenu( false );
 			element.show();
-		} 
+		}
 		/**
 		 * Tutorial mode
 		 */
 		else if( slide > 3 ) {
 			toggleMenu( true );
 			selectItem( element );
-		} 
+		}
 		/**
 		 * App mode
 		 */
@@ -60,7 +60,7 @@
 			togglePresentation( false );
 		}
 
-		e.preventDefault();	
+		e.preventDefault();
 		return false;
 	}
 
@@ -80,7 +80,7 @@
 		/**
 		 * This code is used for presentation purposes
 		 */
-		$( document.body ).keydown( onKeyDown ); 	
+		$( document.body ).keydown( onKeyDown );
 
 		if( window.location.href.indexOf( 'presentation' ) > -1 ) {
 			slide = 0;

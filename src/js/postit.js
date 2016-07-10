@@ -1,4 +1,4 @@
-var template = 
+var template =
 	'<div class="postit large-postit">' +
 	  '<div class="postit-header">' +
 	  '</div>' +
@@ -39,11 +39,11 @@ Postit.prototype.addPositioning = function() {
 		.draggable( {
 			handle: ".postit-header",
 			zIndex: 999,
-			drag: function( event, ui ) {	
+			drag: function( event, ui ) {
 				this.record.set( 'position', {
 					top: ui.position.top,
 					left: ui.position.left
-				} ); 		
+				} );
 			}.bind( this )
 		} );
 
@@ -52,7 +52,7 @@ Postit.prototype.addPositioning = function() {
 			this.element.css( {
 				left: position.left,
 				top: position.top
-			} );	
+			} );
 		}
 	}.bind( this ), true );
 };
