@@ -1,17 +1,43 @@
 var template =
 	'<div class="postit large-postit">' +
 	  '<div class="postit-header">' +
+		'<button class="postit-sync"> Sync </button>' +
 	  '</div>' +
 	  '<div class="postit-inner">' +
 	    '<textarea class="postit-copy"></textarea>' +
 	  '</div>' +
 	'</div>';
 
-function Postit( record, isDesktop ) {
+function Postit( recordFactory, record, isDesktop ) {
 	this.element = $( template );
 	this.textArea = this.element.find( '.postit-copy' );
+	this.syncButton = this.element.find('.postit-sync');
 
+	this.recordFactory = recordFactory;
 	this.record = record;
+
+	record.on('error', function(description, event, topic) {
+		this.textArea.prop('disabled', true)
+		this.textArea.prop('style', 'background: red; border: 1px dotted black')
+		console.log('Record ', postitID, 'error:', description, event, topic)
+	}.bind( this ) )
+
+	this.syncButton.on('click', function() {
+		this.syncButton.prop('disabled', true)
+		this.recordFactory.snapshot(this.record.name)
+			.then(function(data) {
+				alert('Synced')
+				console.log(data)
+				this.syncButton.prop('disabled', false)
+				this.textArea.val(data.content)
+			}.bind( this ))
+			.catch(function(err) {
+				this.textArea.prop('disabled', true)
+				this.textArea.prop('style', 'background: red; border: 1px dotted black')
+				this.element.find('.postit-header').append('<p> Error:' + new String(err) + '</p>')
+			}.bind( this ))
+
+	}.bind(this))
 
 	this.createPostit();
 	this.addContent();

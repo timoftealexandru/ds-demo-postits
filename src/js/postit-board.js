@@ -1,4 +1,6 @@
 function PostitBoard( ds, isDesktop ) {
+	this.isConnected = true
+
 	this.ds = ds;
 	this.boardElement = $( '.board' );
 	this.postits = {};
@@ -14,7 +16,9 @@ function PostitBoard( ds, isDesktop ) {
 	this.postitList = this.ds.record.getList( 'postits/example-board' );
 	this.postitList.on( 'entry-added', this.onPostitAdded.bind( this ) );
 	this.postitList.on( 'entry-removed', this.onPostitRemoved.bind( this ) );
-	this.postitList.whenReady( this.onPostitsLoaded.bind( this ) );
+
+	this.postitList.whenReady()
+		.then( this.onPostitsLoaded.bind(this) );
 }
 
 PostitBoard.prototype.clearBoard = function() {
@@ -31,10 +35,12 @@ PostitBoard.prototype.onPostitsLoaded = function() {
 
 PostitBoard.prototype.onPostitAdded = function( postitID ) {
 	var record = this.ds.record.getRecord( postitID );
-	record.whenReady( function( record ) {
-		this.postits[ postitID ] = new Postit( record, this.isDesktop  );
-		this.boardElement.append( this.postits[ postitID ].getElement());
-	}.bind( this ) );
+	
+	record.whenReady()
+		.then(function () {
+			this.postits[ postitID ] = new Postit( this.ds.record, record, this.isDesktop  );
+			this.boardElement.append( this.postits[ postitID ].getElement());
+		}.bind( this ))
 };
 
 PostitBoard.prototype.onPostitRemoved = function( postitID ) {
@@ -44,10 +50,16 @@ PostitBoard.prototype.onPostitRemoved = function( postitID ) {
 PostitBoard.prototype.addItem = function( properties ) {
 	var newPostitID = this.ds.getUid();
 	var newPostit = this.ds.record.getRecord( newPostitID );
-	newPostit.whenReady( function( record ) {
-		record.set( properties );
-		this.postitList.addEntry( newPostitID );
-	}.bind( this ) );
+	
+	newPostit.whenReady()
+		.then( function () {
+			newPostit.set( properties );
+			this.postitList.addEntry( newPostitID );
+		}.bind( this ) );
+
+	newPostit.on('error', function(description, event, topic) {
+		console.log('Record ', newPostitID, 'error:', description, event, topic)
+	})
 };
 
 PostitBoard.prototype.enableDragAdding = function() {

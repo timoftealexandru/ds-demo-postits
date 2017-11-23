@@ -9,6 +9,14 @@
     position: absolute;
     width: 100%
 }
+.postit-sync {
+    padding: 5px;
+    background: #ffed96;
+    border: 1px dotted white;
+    border-radius: 18px;
+    font-weight: bold;
+    color: grey;
+}
 .postit-copy {
     width: 100%;
     background-color: rgba(0, 0, 0, 0);

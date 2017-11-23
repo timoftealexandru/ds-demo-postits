@@ -16,15 +16,15 @@
 
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/deepstream.io-client-js/1.1.1/deepstream.js"></script>
+	<script type="text/javascript" src="src/js/deepstream.bundle.js"></script>
 
 	<script type="text/javascript" src="src/js/postit.js"></script>
 	<script type="text/javascript" src="src/js/postit-board.js"></script>
 	<script type="text/javascript" src="src/js/app.js"></script>
 	<script type="text/javascript" src="src/js/tutorial.js"></script>
 	
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/tomorrow-night.min.css">
-	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/tomorrow-night.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
 </head>
 
@@ -73,6 +73,12 @@
 		</span>
 		<span class="header-title">
 			RETROSPECTIVE WHITEBOARD
+		</span>
+		<span>
+			<button id="go-online">Reconnect</button>
+		</span>
+		<span>
+			<button id="go-offline">Disconnect</button>
 		</span>
 	</div>
 
